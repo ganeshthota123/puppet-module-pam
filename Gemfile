@@ -17,13 +17,14 @@ ruby_version_segments = Gem::Version.new(RUBY_VERSION.dup).segments
 minor_version = ruby_version_segments[0..1].join('.')
 
 group :development do
-  gem "voxpupuli-test", '6.0.0',        require: false
+  gem "voxpupuli-test", '~> 7.0',        require: false # Updated from 6.0.0 for Ruby 3.2 compatibility
   gem "rubocop-performance", '~> 1.18', require: false
   gem "faraday", '~> 1.0',              require: false
   gem "github_changelog_generator",     require: false
   gem "puppet-blacksmith",              require: false
   gem "puppet-strings",                 require: false
 end
+
 group :system_tests do
   gem "beaker", *location_for(ENV['BEAKER_VERSION'] || '~> 4.29')
   gem "beaker-abs", *location_for(ENV['BEAKER_ABS_VERSION'] || '~> 0.1')
@@ -68,6 +69,7 @@ extra_gemfiles.each do |gemfile|
   end
 end
 # vim: syntax=ruby
+
+# Patches for Ruby 3.2+ and JSON compatibility
 gem 'json', '>= 2.6.3'
-
-
+gem 'multi_json', '>= 1.15.0'
