@@ -69,7 +69,3 @@ extra_gemfiles.each do |gemfile|
   end
 end
 # vim: syntax=ruby
-
-# Patches for Ruby 3.2+ and JSON compatibility
-gem 'json', '>= 2.6.3'
-gem 'multi_json', '>= 1.15.0'
