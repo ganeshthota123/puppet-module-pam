@@ -68,3 +68,6 @@ extra_gemfiles.each do |gemfile|
   end
 end
 # vim: syntax=ruby
+gem 'json', '>= 2.6.3'
+
+
