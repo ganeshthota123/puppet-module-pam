@@ -13,6 +13,8 @@ def package_name(os)
     ['pam']
   when %r{sles-9}
     ['pam', 'pam-modules']
+  when %r{sles-16}
+    ['pam', 'pam-modules']
   when %r{sles}
     ['pam']
   when %r{solaris}
@@ -45,7 +47,7 @@ def common_files_suffix(os)
   case os_id(os)
   when %r{redhat-(5|6|7|8)}
     '_ac'
-  when %r{sles-11}, %r{sles-12}, %r{sles-15}
+  when %r{sles-11}, %r{sles-12}, %r{sles-15}, %r{sles-16}
     '_pc'
   else
     ''
@@ -67,7 +69,7 @@ def sshd_pam_access(os)
   case os_id(os)
   when %r{redhat-2}, %r{redhat-5}, %r{redhat-6}, %r{redhat-7}, %r{redhat-8}, %r{redhat-9}, %r{sles-11}, %r{debian}, %r{ubuntu}
     'required'
-  when %r{sles-9}, %r{sles-10}, %r{sles-12}, %r{sles-15}
+  when %r{sles-9}, %r{sles-10}, %r{sles-12}, %r{sles-15}, %r{sles-16}
     'absent'
   else
     nil
@@ -76,7 +78,7 @@ end
 
 def common_files_create_links(os)
   case os_id(os)
-  when %r{redhat-(5|6|7|8)}, %r{sles-11}, %r{sles-12}, %r{sles-15}
+  when %r{redhat-(5|6|7|8)}, %r{sles-11}, %r{sles-12}, %r{sles-15}, %r{sles-16}
     true
   else
     false
